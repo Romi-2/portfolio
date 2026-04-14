@@ -46,55 +46,55 @@ function ContactPage() {
         </div>
 
         <div className="contact-methods">
-          {/* Email Button */}
-          <button className="contact-btn-secondary" onClick={handleEmailClick}>
-            <div className="btn-icon">📧</div>
-            <div className="btn-content">
+          {/* Email Card */}
+          <div className="contact-card" onClick={handleEmailClick}>
+            <div className="contact-icon">📧</div>
+            <div className="contact-details">
               <h3>Email Me</h3>
               <p>romesa.arshad.baloch@gmail.com</p>
+              <span className="contact-action">Send email →</span>
             </div>
-            <div className="btn-arrow">→</div>
-          </button>
+          </div>
 
-          {/* Phone Button */}
-          <button className="contact-btn-secondary" onClick={handlePhoneClick}>
-            <div className="btn-icon">📞</div>
-            <div className="btn-content">
+          {/* Phone Card */}
+          <div className="contact-card" onClick={handlePhoneClick}>
+            <div className="contact-icon">📞</div>
+            <div className="contact-details">
               <h3>Call Me</h3>
               <p>+92 312 3456789</p>
+              <span className="contact-action">Make a call →</span>
             </div>
-            <div className="btn-arrow">→</div>
-          </button>
+          </div>
 
-          {/* WhatsApp Button */}
-          <button className="contact-btn-secondary" onClick={handleWhatsAppClick}>
-            <div className="btn-icon">💬</div>
-            <div className="btn-content">
+          {/* WhatsApp Card */}
+          <div className="contact-card" onClick={handleWhatsAppClick}>
+            <div className="contact-icon">💬</div>
+            <div className="contact-details">
               <h3>WhatsApp</h3>
               <p>Available 24/7</p>
+              <span className="contact-action">Start chat →</span>
             </div>
-            <div className="btn-arrow">→</div>
-          </button>
+          </div>
 
-          {/* LinkedIn Button */}
-          <button className="contact-btn-secondary" onClick={handleLinkedInClick}>
-            <div className="btn-icon">🔗</div>
-            <div className="btn-content">
+          {/* LinkedIn Card */}
+          <div className="contact-card" onClick={handleLinkedInClick}>
+            <div className="contact-icon">🔗</div>
+            <div className="contact-details">
               <h3>LinkedIn</h3>
               <p>Romesa Arshad</p>
+              <span className="contact-action">View profile →</span>
             </div>
-            <div className="btn-arrow">→</div>
-          </button>
+          </div>
 
-          {/* GitHub Button */}
-          <button className="contact-btn-secondary" onClick={handleGitHubClick}>
-            <div className="btn-icon">💻</div>
-            <div className="btn-content">
+          {/* GitHub Card */}
+          <div className="contact-card" onClick={handleGitHubClick}>
+            <div className="contact-icon">💻</div>
+            <div className="contact-details">
               <h3>GitHub</h3>
               <p>Check my work</p>
+              <span className="contact-action">View repos →</span>
             </div>
-            <div className="btn-arrow">→</div>
-          </button>
+          </div>
         </div>
 
         <div className="contact-footer">
