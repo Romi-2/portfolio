@@ -1,0 +1,211 @@
+/* About.css */
+.about-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 50px;
+  background: linear-gradient(135deg, #fff, #38bdf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.about-content {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.about-text p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Subsection Titles */
+.subsection-title {
+  font-size: 1.5rem;
+  color: #38bdf8;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subsection-title:first-of-type {
+  margin-top: 0;
+}
+
+/* Education Card */
+.education-card {
+  background: rgba(56, 189, 248, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #38bdf8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(56, 189, 248, 0.1);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.education-header h4 {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.education-date {
+  color: #38bdf8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.education-degree {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+/* Course Card */
+.course-card {
+  background: rgba(56, 189, 248, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #a855f7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(168, 85, 247, 0.1);
+}
+
+.course-card h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.course-provider {
+  color: #a855f7;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Internship Card */
+.internship-card {
+  background: rgba(56, 189, 248, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  border-left: 4px solid #22c55e;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.internship-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.1);
+}
+
+.internship-card h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.internship-company {
+  color: #22c55e;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.internship-period {
+  color: #38bdf8;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.internship-description {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-content {
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .subsection-title {
+    font-size: 1.3rem;
+  }
+
+  .education-header {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .education-header h4 {
+    font-size: 1rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content {
+    padding: 20px;
+  }
+
+  .subsection-title {
+    font-size: 1.2rem;
+  }
+
+  .education-card, 
+  .course-card, 
+  .internship-card {
+    padding: 15px;
+  }
+}
