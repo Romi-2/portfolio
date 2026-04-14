@@ -9,6 +9,18 @@ function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
 
+  // Close mobile menu when window resizes above mobile breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isMobileMenuOpen])
+
   // Handle scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +47,18 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [location.pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
 
   // Smooth scroll to section (only on home page)
   const scrollToSection = (sectionId: string) => {
@@ -130,10 +154,11 @@ function Navbar() {
           Resume
         </button>
 
-        {/* Mobile Menu Icon */}
+        {/* Mobile Menu Icon (Hamburger) */}
         <div 
           className={`mobile-menu-icon ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           <span></span>
           <span></span>
