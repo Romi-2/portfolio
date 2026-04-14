@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import '../style/Navbar.css'
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Handle scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
       
-      // Update active section based on scroll position
-      const sections = ['home', 'projects', 'contact', 'about']
-      const scrollPosition = window.scrollY + 100
-      
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+      // Only update active section on home page
+      if (location.pathname === '/') {
+        const sections = ['home', 'projects', 'about']
+        const scrollPosition = window.scrollY + 100
+        
+        for (const section of sections) {
+          const element = document.getElementById(section)
+          if (element) {
+            const { offsetTop, offsetHeight } = element
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section)
+              break
+            }
           }
         }
       }
@@ -29,15 +34,46 @@ function Navbar() {
     
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [location.pathname])
 
-  // Smooth scroll to section
+  // Smooth scroll to section (only on home page)
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsMobileMenuOpen(false)
-      setActiveSection(sectionId)
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+        setIsMobileMenuOpen(false)
+        setActiveSection(sectionId)
+      }
+    }
+  }
+
+  // Navigate to home and then scroll
+  const navigateToHomeAndScroll = (sectionId: string) => {
+    if (location.pathname === '/') {
+      scrollToSection(sectionId)
+    } else {
+      navigate('/')
+      // Wait for navigation to complete then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+          setActiveSection(sectionId)
+        }
+      }, 100)
+    }
+  }
+
+  // Handle navigation
+  const handleNavigation = (path: string, sectionId?: string) => {
+    setIsMobileMenuOpen(false)
+    
+    if (path === '/contact') {
+      navigate('/contact')
+      setActiveSection('contact')
+    } else if (sectionId) {
+      navigateToHomeAndScroll(sectionId)
     }
   }
 
@@ -45,7 +81,7 @@ function Navbar() {
     <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-container">
         {/* Logo */}
-        <div className="navbar-logo" onClick={() => scrollToSection('home')}>
+        <div className="navbar-logo" onClick={() => handleNavigation('/', 'home')}>
           <span className="logo-text">Romesa</span>
           <span className="logo-dot">.</span>
         </div>
@@ -54,32 +90,32 @@ function Navbar() {
         <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
           <li className="nav-item">
             <button 
-              onClick={() => scrollToSection('home')}
-              className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
+              onClick={() => handleNavigation('/', 'home')}
+              className={`nav-link ${activeSection === 'home' && location.pathname === '/' ? 'active' : ''}`}
             >
               Home
             </button>
           </li>
           <li className="nav-item">
             <button 
-              onClick={() => scrollToSection('projects')}
-              className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
+              onClick={() => handleNavigation('/', 'projects')}
+              className={`nav-link ${activeSection === 'projects' && location.pathname === '/' ? 'active' : ''}`}
             >
               Projects
             </button>
           </li>
           <li className="nav-item">
             <button 
-              onClick={() => scrollToSection('contact')}
-              className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
+              onClick={() => handleNavigation('/contact')}
+              className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
             >
               Contact
             </button>
           </li>
           <li className="nav-item">
             <button 
-              onClick={() => scrollToSection('about')}
-              className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+              onClick={() => handleNavigation('/', 'about')}
+              className={`nav-link ${activeSection === 'about' && location.pathname === '/' ? 'active' : ''}`}
             >
               About
             </button>

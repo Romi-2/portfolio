@@ -6,11 +6,18 @@ function ContactPage() {
   const navigate = useNavigate();
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:romesa.arshad.baloch@gmail.com';
-  };
-
-  const handlePhoneClick = () => {
-    window.location.href = 'tel:+923123456789';
+    const email = 'romesa.arshad.baloch@gmail.com';
+    const subject = 'Job Opportunity / Collaboration';
+    const body = 'Hello Romesa,';
+    
+    // Try Gmail first (most reliable)
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open Gmail compose
+    window.open(gmailLink, '_blank');
+    
+    // Also copy email to clipboard as backup
+    navigator.clipboard.writeText(email);
   };
 
   const handleLinkedInClick = () => {
@@ -22,12 +29,12 @@ function ContactPage() {
   };
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/923123456789', '_blank');
+    window.open('https://wa.me/923207828649', '_blank');
   };
 
   const copyEmailToClipboard = () => {
     navigator.clipboard.writeText('romesa.arshad.baloch@gmail.com');
-    alert('Email copied to clipboard! 📋');
+    alert('✅ Email copied to clipboard! 📋');
   };
 
   return (
@@ -46,55 +53,45 @@ function ContactPage() {
         </div>
 
         <div className="contact-methods">
-          {/* Email Card */}
-          <div className="contact-card" onClick={handleEmailClick}>
-            <div className="contact-icon">📧</div>
-            <div className="contact-details">
+          {/* Email Button - Opens Gmail Compose */}
+          <button className="contact-btn-secondary" onClick={handleEmailClick}>
+            <div className="btn-icon">📧</div>
+            <div className="btn-content">
               <h3>Email Me</h3>
               <p>romesa.arshad.baloch@gmail.com</p>
-              <span className="contact-action">Send email →</span>
             </div>
-          </div>
+            <div className="btn-arrow">→</div>
+          </button>
 
-          {/* Phone Card */}
-          <div className="contact-card" onClick={handlePhoneClick}>
-            <div className="contact-icon">📞</div>
-            <div className="contact-details">
-              <h3>Call Me</h3>
-              <p>+92 312 3456789</p>
-              <span className="contact-action">Make a call →</span>
-            </div>
-          </div>
-
-          {/* WhatsApp Card */}
-          <div className="contact-card" onClick={handleWhatsAppClick}>
-            <div className="contact-icon">💬</div>
-            <div className="contact-details">
+          {/* WhatsApp Button */}
+          <button className="contact-btn-secondary" onClick={handleWhatsAppClick}>
+            <div className="btn-icon">💬</div>
+            <div className="btn-content">
               <h3>WhatsApp</h3>
               <p>Available 24/7</p>
-              <span className="contact-action">Start chat →</span>
             </div>
-          </div>
+            <div className="btn-arrow">→</div>
+          </button>
 
-          {/* LinkedIn Card */}
-          <div className="contact-card" onClick={handleLinkedInClick}>
-            <div className="contact-icon">🔗</div>
-            <div className="contact-details">
+          {/* LinkedIn Button */}
+          <button className="contact-btn-secondary" onClick={handleLinkedInClick}>
+            <div className="btn-icon">🔗</div>
+            <div className="btn-content">
               <h3>LinkedIn</h3>
               <p>Romesa Arshad</p>
-              <span className="contact-action">View profile →</span>
             </div>
-          </div>
+            <div className="btn-arrow">→</div>
+          </button>
 
-          {/* GitHub Card */}
-          <div className="contact-card" onClick={handleGitHubClick}>
-            <div className="contact-icon">💻</div>
-            <div className="contact-details">
+          {/* GitHub Button */}
+          <button className="contact-btn-secondary" onClick={handleGitHubClick}>
+            <div className="btn-icon">💻</div>
+            <div className="btn-content">
               <h3>GitHub</h3>
-              <p>Check my work</p>
-              <span className="contact-action">View repos →</span>
+              <p>github.com/Romi-2</p>
             </div>
-          </div>
+            <div className="btn-arrow">→</div>
+          </button>
         </div>
 
         <div className="contact-footer">
