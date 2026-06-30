@@ -12,9 +12,8 @@
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  color: #fff;
   margin-bottom: 15px;
-  background: linear-gradient(135deg, #fff, #38bdf8);
+  background: linear-gradient(135deg, #0f172a, #0284c7);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -22,7 +21,7 @@
 
 .section-subtitle {
   text-align: center;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1.1rem;
   margin-bottom: 50px;
 }
@@ -36,14 +35,15 @@
 
 /* Project Card */
 .project-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 25px;
-  border: 1px solid rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.25);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 }
 
 /* FYP Card Special Styling */
@@ -162,7 +162,7 @@
 
 /* Project Description */
 .project-description {
-  color: #cbd5e1;
+  color: #475569;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 20px;
@@ -186,7 +186,7 @@
 }
 
 .project-features li {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.85rem;
   padding: 5px 0;
   padding-left: 20px;

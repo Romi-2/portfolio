@@ -1,4 +1,5 @@
 import '../style/Project.css'
+import { useEffect, useRef } from 'react'
 
 type Project = {
   title: string
@@ -14,7 +15,7 @@ const projects: Project[] = [
     title: "MOBILE BIO LAB",
     description: "Comprehensive web-based laboratory management system for booking, reservations, and sample tracking",
     techStack: ["React.js", "Express.js", "MySQL", "JavaScript", "HTML5", "CSS3", "Bootstrap"],
-    link: "https://mobile-bio-lab.netlify.app/", 
+    link: "https://mobile-bio-lab.netlify.app/",
     isFYP: true,
     features: [
       "Responsive UI for lab booking and reservation management",
@@ -43,7 +44,7 @@ const projects: Project[] = [
     title: "PLANCER",
     description: "Modern freelancing platform with sleek UI/UX design",
     techStack: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-    link: "#", // Add your actual link here
+    link: "#",
     features: [
       "Intuitive user experience design",
       "Sleek and modern UI/UX",
@@ -78,21 +79,48 @@ const projects: Project[] = [
 ]
 
 function Projects() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const cards = containerRef.current?.querySelectorAll('.project-card')
+    if (!cards) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-up')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+    )
+
+    cards.forEach((card) => observer.observe(card))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
         <h2 className="section-title">Featured Projects</h2>
         <p className="section-subtitle">Here are some of my recent works</p>
-        
-        <div className="projects-grid">
+
+        <div className="projects-grid" ref={containerRef}>
           {projects.map((project, index) => (
-            <div key={index} className={`project-card ${project.isFYP ? 'fyp-card' : ''}`}>
+            <div
+              key={index}
+              className={`project-card ${project.isFYP ? 'fyp-card' : ''}`}
+              style={{ transitionDelay: `${(index % 3) * 90}ms` }}
+            >
               {project.isFYP && (
                 <div className="fyp-badge">
                   <span>🎓 Final Year Project</span>
                 </div>
               )}
-              
+
               <div className="project-header">
                 <h3>{project.title}</h3>
                 <div className="tech-stack">
@@ -101,9 +129,9 @@ function Projects() {
                   ))}
                 </div>
               </div>
-              
+
               <p className="project-description">{project.description}</p>
-              
+
               <div className="project-features">
                 <h4>Key Features:</h4>
                 <ul>
@@ -112,12 +140,12 @@ function Projects() {
                   ))}
                 </ul>
               </div>
-              
+
               {project.link && (
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="project-link"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

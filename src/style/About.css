@@ -12,24 +12,24 @@
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  color: #fff;
   margin-bottom: 50px;
-  background: linear-gradient(135deg, #fff, #38bdf8);
+  background: linear-gradient(135deg, #0f172a, #0284c7);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .about-content {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px;
-  border: 1px solid rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
 }
 
 .about-text p {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 30px;
@@ -80,7 +80,7 @@
 
 .education-header h4 {
   font-size: 1.2rem;
-  color: #fff;
+  color: #0f172a;
   font-weight: 600;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .education-degree {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1rem;
 }
 
@@ -112,7 +112,7 @@
 
 .course-card h4 {
   font-size: 1.1rem;
-  color: #fff;
+  color: #0f172a;
   font-weight: 600;
   margin-bottom: 5px;
 }
@@ -139,7 +139,7 @@
 
 .internship-card h4 {
   font-size: 1.1rem;
-  color: #fff;
+  color: #0f172a;
   font-weight: 600;
   margin-bottom: 5px;
 }
@@ -158,7 +158,7 @@
 }
 
 .internship-description {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-top: 10px;

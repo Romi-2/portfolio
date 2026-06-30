@@ -1,7 +1,7 @@
 /* style/Skills.css */
 .skills-section {
   padding: 20px 0;
-  background: linear-gradient(135deg, #0a0e27 0%, #0f172a 50%, #1e1b4b 100%);
+  background: transparent;
   overflow: hidden;
 }
 
@@ -13,8 +13,8 @@
 .skills-title {
   text-align: center;
   font-size: 2.5rem;
-  color: #fff;
-  background: linear-gradient(135deg, #fff, #38bdf8);
+  color: #0f172a;
+  background: linear-gradient(135deg, #0f172a, #0284c7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -24,10 +24,11 @@
 .marquee {
   width: 100%;
   overflow: hidden;
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(255, 255, 255, 0.7);
   padding: 20px 0;
   border-radius: 60px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
 .marquee-content {
@@ -52,7 +53,7 @@
   gap: 0.8rem;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #fff;
+  color: #334155;
   margin-right: 2rem;
   padding: 0.5rem 1rem;
   border-radius: 50px;
@@ -61,7 +62,7 @@
 }
 
 .marquee-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(2, 132, 199, 0.08);
   transform: scale(1.05);
 }
 

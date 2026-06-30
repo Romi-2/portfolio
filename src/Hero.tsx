@@ -1,14 +1,14 @@
 // Hero.tsx
 import './style/Hero.css'
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useNavigate } from 'react-router-dom' // Add this
+import { useNavigate } from 'react-router-dom'
 
 function Hero() {
-  const navigate = useNavigate(); // Add this
+  const navigate = useNavigate();
   const [text, setText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [index, setIndex] = useState(0)
-  
+
   const roles = useRef([
     'React.js Developer',
     'Frontend Enthusiast',
@@ -16,10 +16,10 @@ function Hero() {
     'Full Stack Student',
     'Passionate Coder'
   ])
-  
+
   const typeEffect = useCallback(() => {
     const currentRole = roles.current[index]
-    
+
     if (isDeleting) {
       if (text.length > 0) {
         setText(prev => prev.slice(0, -1))
@@ -38,15 +38,15 @@ function Hero() {
       }
     }
   }, [text, isDeleting, index])
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       typeEffect()
     }, isDeleting ? 50 : 80)
-    
+
     return () => clearTimeout(timer)
   }, [text, isDeleting, index, typeEffect])
-  
+
   const handleDownloadCV = () => {
     const pdfUrl = '/Romesa_arshad_resume.pdf'
     const link = document.createElement('a')
@@ -56,15 +56,15 @@ function Hero() {
     link.click()
     document.body.removeChild(link)
   }
-  
+
   const handleHireMe = () => {
-    navigate('/contact') // Navigate to contact page instead of modal
+    navigate('/contact')
   }
-  
+
   const handleEmailClick = () => {
     window.open('https://mail.google.com/mail/?view=cm&fs=1&to=romesa.arshad.baloch@gmail.com', '_blank')
   }
-  
+
   return (
     <section className="hero" id="hero">
       <div className="hero-container">
@@ -74,11 +74,11 @@ function Hero() {
             ✨ Looking for Opportunities
           </span>
         </div>
-        
+
         <h1 className="hero-title">
           Hi, I'm <span className="highlight">Romesa Arshad</span> <span className="wave">👋</span>
         </h1>
-        
+
         <div className="hero-typing">
           <span className="static-text">I'm a </span>
           <span className="dynamic-text">
@@ -86,13 +86,13 @@ function Hero() {
             <span className="cursor">|</span>
           </span>
         </div>
-        
+
         <p className="hero-description">
-          I build <strong>scalable, user-friendly</strong> web applications. 
-          Specialized in <strong>React.js, Express.js, and MySQL</strong>. 
+          I build <strong>scalable, user-friendly</strong> web applications.
+          Specialized in <strong>React.js, Express.js, and MySQL</strong>.
           Recently completed Degree and looking for exciting opportunities!
         </p>
-        
+
         <div className="hero-stats">
           <div className="stat">
             <span className="stat-number">5+</span>
@@ -108,7 +108,7 @@ function Hero() {
             <span className="stat-label">Graduation</span>
           </div>
         </div>
-        
+
         <div className="hero-buttons">
           <button className="btn-primary" onClick={handleDownloadCV}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -123,7 +123,7 @@ function Hero() {
             Hire Me
           </button>
         </div>
-        
+
         <div className="hero-social">
           <a href="https://github.com/Romi-2" target="_blank" rel="noopener noreferrer" className="social-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

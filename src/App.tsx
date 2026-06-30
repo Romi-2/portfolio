@@ -6,6 +6,7 @@ import About from './Components/About'
 import Skills from './Components/Skills'
 import Projects from './Components/Projects'
 import ContactPage from './Components/Contact'
+import FluidBackground from './FluidBackground'
 
 // Home Page Component
 function HomePage() {
@@ -30,6 +31,7 @@ function HomePage() {
 function App() {
   return (
     <Router>
+      <FluidBackground />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

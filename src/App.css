@@ -1,39 +1,84 @@
-/* Reset */
+/* ===== RESET & BASE ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
 }
+
 body {
-  background: linear-gradient(135deg, #0a0e27 0%, #0f172a 50%, #1e1b4b 100%);
-  color: #fff;
+  background: linear-gradient(160deg, #f8fafc 0%, #f1f5f9 40%, #e0f2fe 100%);
+  background-attachment: fixed;
+  color: #0f172a;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* App Container - Centers content with proper spacing */
+/* Subtle dot grid overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.35) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== WEBGL FLUID BACKGROUND ===== */
+.fluid-background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+}
+
+/* ===== APP CONTAINER ===== */
 .app-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
-  background: linear-gradient(135deg, #0a0e27 0%, #0f172a 50%, #1e1b4b 100%);
+  position: relative;
+  z-index: 1;
 }
 
-/* Navbar */
+section,
+.navbar,
+.app-container,
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  z-index: 2;
+}
+
+/* ===== NAVBAR (legacy App.css overrides) ===== */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 10%;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .navbar h2 {
-  color: #38bdf8;
+  color: #0284c7;
 }
 
 .navbar ul {
@@ -45,56 +90,62 @@ body {
 .navbar li {
   cursor: pointer;
   transition: 0.3s;
+  color: #475569;
 }
 
 .navbar li:hover {
-  color: #38bdf8;
+  color: #0284c7;
 }
 
-/* Sections */
+/* ===== SECTIONS ===== */
 section {
   padding: 10px 0;
 }
 
 section h2 {
   margin-bottom: 20px;
-  color: #38bdf8;
+  color: #8fc702;
 }
 
-/* Skills */
-ul {
+/* ===== SKILLS ===== */
+.skills-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  list-style: none;
 }
 
-ul li {
-  background: #1e293b;
+.skills-list li {
+  background: #ffffff;
   padding: 10px 15px;
   border-radius: 20px;
   font-size: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
-/* Projects */
+/* ===== PROJECTS ===== */
 .card {
-  background: #1e293b;
+  background: #ffffff;
   padding: 20px;
   margin: 15px 0;
   border-radius: 15px;
   transition: 0.3s;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.12);
 }
 
-/* Contact */
+/* ===== CONTACT ===== */
 section p {
   margin: 5px 0;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -108,7 +159,7 @@ section p {
   section {
     padding: 50px 0;
   }
-  
+
   .app-container {
     padding: 0 1.5rem;
   }
